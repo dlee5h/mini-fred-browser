@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyproj
+
+# Virtual environments
+venv/
+.env
+.env.* 
+
+# Byte-compiled / build
+build/
+dist/
+*.egg-info/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Data and database files (do NOT commit large DBs / raw data)
+data/
+db/
+raw/
+exports/
+*.duckdb
+*.db
+*.sqlite
+*.sqlite3
+
+# dbt artifacts (if present)
+dbt/target/
+dbt/logs/
+dbt/.temp/
+
+# Node / frontend
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Streamlit / caches
+.cache/
+.streamlit/
+
+# Secret keys, API keys, credentials
+secrets/
+*.pem
+*.key
+

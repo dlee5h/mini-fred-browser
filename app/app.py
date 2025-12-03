@@ -2,8 +2,13 @@ import streamlit as st
 import duckdb
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
-con = duckdb.connect("../data/fred.duckdb")
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # go up ONE folder to project root
+db_path = os.path.join(BASE_DIR, "data", "fred.duckdb")
+
+con = duckdb.connect(db_path)
+
 
 st.title("Mini FRED Browser")
 
