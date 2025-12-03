@@ -4,6 +4,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
+last_updated_file = os.path.join(os.path.dirname(__file__), "..", "data", "last_updated.txt")
+if os.path.exists(last_updated_file):
+    last = open(last_updated_file).read()
+    st.caption(f"Last updated (UTC): {last}")
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # go up ONE folder to project root
 db_path = os.path.join(BASE_DIR, "data", "fred.duckdb")
 
@@ -36,3 +41,4 @@ st.download_button(
     df.to_csv(index=False),
     file_name=f"{selected}.csv"
 )
+

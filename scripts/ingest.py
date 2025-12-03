@@ -47,3 +47,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+import datetime
+with open("../data/last_updated.txt", "w") as f:
+    f.write(str(datetime.datetime.utcnow()))
