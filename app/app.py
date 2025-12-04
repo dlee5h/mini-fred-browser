@@ -47,12 +47,13 @@ ax.legend()
 st.pyplot(fig)
 
 # Query
-df = con.execute("""
-    SELECT date, value
-    FROM facts
-    WHERE series_id = ?
-    ORDER BY date
-""", [selected]).df()
+for s in selected_list:
+    df = con.execute("""
+        SELECT date, value
+        FROM facts
+        WHERE series_id = ?
+        ORDER BY date
+    """, [s]).df()
 
 # Chart
 fig, ax = plt.subplots(figsize=(12,4))
