@@ -19,7 +19,11 @@ st.title("Mini FRED Browser")
 
 # Dropdown
 series_list = con.execute("SELECT DISTINCT series_id FROM facts").df()["series_id"].tolist()
-selected = st.selectbox("Select a Series", series_list)
+selected = st.multiselect(
+    "Select Series (search supported)",
+    options=series_list,
+    default=[series_list[0]]
+)
 
 # Query
 df = con.execute("""
