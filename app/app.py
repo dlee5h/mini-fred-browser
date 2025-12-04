@@ -2,7 +2,7 @@ import streamlit as st
 import duckdb
 import pandas as pd
 
-conn = duckdb.connect("data/fred.duckdb", read_only=True)
+conn = duckdb.connect("../data/fred.duckdb", read_only=True)
 
 @st.cache_data
 def run_query(series_ids):
