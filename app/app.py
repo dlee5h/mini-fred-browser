@@ -19,11 +19,32 @@ st.title("Mini FRED Browser")
 
 # Dropdown
 series_list = con.execute("SELECT DISTINCT series_id FROM facts").df()["series_id"].tolist()
-selected = st.multiselect(
-    "Select Series (search supported)",
+selected_list = st.multiselect(
+    "Select Series",
     options=series_list,
     default=[series_list[0]]
 )
+
+def get_series(series_id):
+    q = """
+        SELECT date, value
+        FROM facts
+        WHERE series_id = ?
+        ORDER BY date
+    """
+    return con.execute(q, [series_id]).df()
+
+data = {}
+for s in selected_list:
+    data[s] = get_series(s)
+
+fig, ax = plt.subplots(figsize=(12,5))
+
+for series_id, df in data.items():
+    ax.plot(df["date"], df["value"], label=series_id)
+
+ax.legend()
+st.pyplot(fig)
 
 # Query
 df = con.execute("""
